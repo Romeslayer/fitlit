@@ -17,7 +17,7 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 ## Overview of Project
 - Fitlit is an app where you can view hydration and sleep info, and compare it to other users.
 
-![](https://files.slack.com/files-pri/T029P2S9M-F033RHTASSC/fitlit.gif)
+![FitLit](https://user-images.githubusercontent.com/20838033/153958551-932f0c01-ac65-467f-82da-e918d865940a.gif)
 
 ## Technologies Used
 - Javascript
