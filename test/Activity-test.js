@@ -67,5 +67,10 @@ describe('Activity', () => {
     expect(user2.activity.getDailyMinutes("2019/06/15")).to.eql(138);
   });
 
+  it('should be able to calculate the average minutes active for a given week', () => {
+    expect(user1.activity.getWeeklyMinutes("2019/06/15")).to.eql(171);
+    expect(user1.activity.getWeeklyMinutes("2019/06/15")).to.eql(156);
+  });
+
   
 })
