@@ -1,6 +1,6 @@
 // Your fetch requests will live here!
 const getData = (fetchAPI) => {
-  return fetch(`https://fitlit-api.herokuapp.com/api/v1/${fetchAPI}`)
+  return fetch(`http://localhost:3001/api/v1/${fetchAPI}`)
     .then(response => response.json());
 }
 
