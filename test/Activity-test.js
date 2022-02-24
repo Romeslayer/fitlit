@@ -56,4 +56,9 @@ describe('Activity', () => {
       },
     );
   });
+
+  it('should be able to calculate amount of miles walked on a given day', () => {
+    expect(user1.activity.getMiles("2019/06/15")).to.eql(2.9)
+    expect(user2.activity.getMiles("2019/06/15")).to.eql(3.6)
+  });
 })
