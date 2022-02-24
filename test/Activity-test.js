@@ -31,5 +31,29 @@ describe('Activity', () => {
     expect(user1.activity.days).to.be.an('array');
   });
 
-  
+  it('should be able to populate activity.days array based on ID', () => {
+    expect(user1.activity.days.length).to.eql(14);
+    expect(user1.activity.days[0]).to.eql(
+      {
+        userID: 1,
+        date: "2019/06/15",
+        numSteps: 3577,
+        minutesActive: 140,
+        flightsOfStairs: 16
+      },
+    );
+  });
+
+  it('should be able to populate activity.days with different ID', () => {
+    expect(user2.activity.days.length).to.eql(14);
+    expect(user2.activity.days[0]).to.eql(
+      {
+        userID: 2,
+        date: "2019/06/15",
+        numSteps: 4294,
+        minutesActive: 138,
+        flightsOfStairs: 10
+      },
+    );
+  });
 })
