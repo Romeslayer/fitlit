@@ -1,4 +1,4 @@
-const activityData =[
+const activityTestData =[
   {
     userID: 1,
     date: '2019/06/15',
@@ -195,3 +195,5 @@ const activityData =[
     minutesActive: 193,
     flightsOfStairs: 45
   }]
+
+export default activityTestData;
