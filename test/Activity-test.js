@@ -19,4 +19,7 @@ describe('Activity', () => {
     user2.activity = new Activity(activityTestData, user2.id);
   });
 
+  it('should be a function', () => {
+    expect(Activity).to.be.a('function');
+  });
 })
