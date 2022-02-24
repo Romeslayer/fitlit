@@ -26,4 +26,10 @@ describe('Activity', () => {
   it('should be an instance of Activity', () => {
     expect(user1.activity).to.be.an.instanceof(Activity);
   });
+
+  it('should hold an array of activity info', () => {
+    expect(user1.activity.days).to.be.an('array');
+  });
+
+  
 })
