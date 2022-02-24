@@ -22,4 +22,8 @@ describe('Activity', () => {
   it('should be a function', () => {
     expect(Activity).to.be.a('function');
   });
+
+  it('should be an instance of Activity', () => {
+    expect(user1.activity).to.be.an.instanceof(Activity);
+  });
 })
