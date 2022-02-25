@@ -3,6 +3,22 @@ class Activity {
     this.days = data.filter(day => day.userID === user.id);
     this.strideLength = user.strideLength;
     this.stepGoal = user.dailyStepGoal;
+    this.usersStairsAvg = {}
+
+    data.forEach(day => {
+      if (!this.usersStairsAvg[day.date]) {
+        this.usersStairsAvg[day.date] = 0;
+      }
+    });
+    Object.keys(this.usersStairsAvg).forEach(key => {
+      let days = data.filter(day => key === day.date);
+      let stairAvg = days.reduce((acc, day) => {
+        return acc + day.flightsOfStairs;
+      }, 0) / days.length;
+      this.usersStairsAvg[key] = Math.floor(stairAvg);
+    });
+
+    
   }
   getMiles(date) {
     let result = this.days.find(day => day.date === date);
@@ -32,7 +48,9 @@ class Activity {
       return acc > day.flightsOfStairs ? acc : day.flightsOfStairs;
     }, 0);
   }
-  
+  allUsersStairsAvg(date) {
+    return this.usersStairsAvg[date];
+  }
 }
 
 export default Activity;
