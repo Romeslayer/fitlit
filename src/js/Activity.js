@@ -2,6 +2,7 @@ class Activity {
   constructor(data, user) {
     this.days = data.filter(day => day.userID === user.id);
     this.strideLength = user.strideLength;
+    this.stepGoal = user.dailyStepGoal;
   }
   getMiles(date) {
     let result = this.days.find(day => day.date === date);
@@ -19,6 +20,19 @@ class Activity {
     }, 0);
     return Math.floor(result / 7);
   }
+  reachStepGoal(date) {
+    let day = this.days.find(day => day.date === date);
+    return (day.numSteps >= this.stepGoal ? true : false);
+  }
+  daysExceededStepGoal() {
+    return this.days.filter(day => this.reachStepGoal(day.date));
+  }
+  stairClimbRecord() {
+    return this.days.reduce((acc, day) => {
+      return acc > day.flightsOfStairs ? acc : day.flightsOfStairs;
+    }, 0);
+  }
+  
 }
 
 export default Activity;
