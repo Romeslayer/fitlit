@@ -15,8 +15,8 @@ describe('Activity', () => {
     userRepository = new UserRepository(userTestData)
     user1 = new User(userTestData[0]);
     user2 = new User(userTestData[1]);
-    user1.activity = new Activity(activityTestData, user1.id);
-    user2.activity = new Activity(activityTestData, user2.id);
+    user1.activity = new Activity(activityTestData, user1);
+    user2.activity = new Activity(activityTestData, user2);
   });
 
   it('should be a function', () => {
@@ -59,10 +59,10 @@ describe('Activity', () => {
 
   it('should be able to calculate amount of miles walked on a given day', () => {
     expect(user1.activity.getMiles("2019/06/15")).to.eql(2.9);
-    expect(user2.activity.getMiles("2019/06/15")).to.eql(3.6);
+    expect(user2.activity.getMiles("2019/06/15")).to.eql(3.7);
   });
 
-  it('should be able to return the amount of minutes active on a given day', () => {
+  it.only('should be able to return the amount of minutes active on a given day', () => {
     expect(user1.activity.getDailyMinutes("2019/06/15")).to.eql(140);
     expect(user2.activity.getDailyMinutes("2019/06/15")).to.eql(138);
   });
