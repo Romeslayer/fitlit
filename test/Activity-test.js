@@ -69,8 +69,11 @@ describe('Activity', () => {
 
   it('should be able to calculate the average minutes active for a given week', () => {
     expect(user1.activity.getWeeklyMinutes("2019/06/15")).to.eql(171);
-    expect(user1.activity.getWeeklyMinutes("2019/06/15")).to.eql(156);
+    expect(user2.activity.getWeeklyMinutes("2019/06/15")).to.eql(156);
   });
 
-  
+  it('should be able to determine if the user has reached their step goal for a given day', () => {
+    expect(user1.activity.reachStepGoal("2019/06/15")).to.eql(false);
+    expect(user2.activity.reachStepGoal("2019/06/15")).to.eql(false);
+  });
 })
