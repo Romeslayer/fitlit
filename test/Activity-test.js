@@ -62,7 +62,7 @@ describe('Activity', () => {
     expect(user2.activity.getMiles("2019/06/15")).to.eql(3.7);
   });
 
-  it.only('should be able to return the amount of minutes active on a given day', () => {
+  it('should be able to return the amount of minutes active on a given day', () => {
     expect(user1.activity.getDailyMinutes("2019/06/15")).to.eql(140);
     expect(user2.activity.getDailyMinutes("2019/06/15")).to.eql(138);
   });
@@ -72,7 +72,7 @@ describe('Activity', () => {
     expect(user2.activity.getWeeklyMinutes("2019/06/15")).to.eql(156);
   });
 
-  it('should be able to determine if the user has reached their step goal for a given day', () => {
+  it.only('should be able to determine if the user has reached their step goal for a given day', () => {
     expect(user1.activity.reachStepGoal("2019/06/15")).to.eql(false);
     expect(user2.activity.reachStepGoal("2019/06/15")).to.eql(false);
   });
