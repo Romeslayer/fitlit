@@ -181,7 +181,7 @@ describe('Activity', () => {
     expect(user2.activity.stairClimbRecord()).to.eql(45);
   });
 
-  it.only('should be able to calculate the average numbers of stairs climbed for all users on a specific date', () => {
+  it('should be able to calculate the average numbers of stairs climbed for all users on a specific date', () => {
     expect(user1.activity.allUsersStairsAvg("2019/06/15")).to.eql(13);
     expect(user2.activity.allUsersStairsAvg("2019/06/16")).to.eql(36);
   });
