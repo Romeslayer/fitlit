@@ -15,8 +15,8 @@ describe('Activity', () => {
     userRepository = new UserRepository(userTestData)
     user1 = new User(userTestData[0]);
     user2 = new User(userTestData[1]);
-    user1.activity = new Activity(activityTestData, user1.id);
-    user2.activity = new Activity(activityTestData, user2.id);
+    user1.activity = new Activity(activityTestData, user1);
+    user2.activity = new Activity(activityTestData, user2);
   });
 
   it('should be a function', () => {
@@ -59,7 +59,7 @@ describe('Activity', () => {
 
   it('should be able to calculate amount of miles walked on a given day', () => {
     expect(user1.activity.getMiles("2019/06/15")).to.eql(2.9);
-    expect(user2.activity.getMiles("2019/06/15")).to.eql(3.6);
+    expect(user2.activity.getMiles("2019/06/15")).to.eql(3.7);
   });
 
   it('should be able to return the amount of minutes active on a given day', () => {
@@ -75,6 +75,7 @@ describe('Activity', () => {
   it('should be able to determine if the user has reached their step goal for a given day', () => {
     expect(user1.activity.reachStepGoal("2019/06/15")).to.eql(false);
     expect(user2.activity.reachStepGoal("2019/06/15")).to.eql(false);
+    expect(user1.activity.reachStepGoal("2019/06/17")).to.eql(true);
   });
 
   it('should be able to determine all days that the user met/exceeded their step goal', () => {
@@ -177,7 +178,7 @@ describe('Activity', () => {
 
   it('should be able to return the all-time stair climbing record', () => {
     expect(user1.activity.stairClimbRecord()).to.eql(39);
-    expect(user1.activity.stairClimbRecord()).to.eql(45);
+    expect(user2.activity.stairClimbRecord()).to.eql(45);
   });
 
   it('should be able to calculate the average numbers of stairs climbed for all users on a specific date', () => {
