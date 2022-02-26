@@ -284,6 +284,344 @@ let avgSleepQualityChart = (currentUser) => {
   };
 };
 
+let todaysNumOfStepsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysSteps = activity.days[activity.days.length - 1].numSteps;
+  return {
+    type: 'doughnut',
+    data: {
+      labels: ['Total Steps', 'Remaining to Goal'],
+      datasets:[{
+        label: `Today's Total Steps`,
+        data: user.dailyStepGoal > todaysSteps ? [todaysSteps, user.dailyStepGoal - todaysSteps]
+                 : [todaysSteps],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Today\'s Total Steps Compared to Goal'
+        }
+      }
+    }
+  };
+}
+
+let todaysMinActiveChart = (user) => {
+  let activity = user.activity;
+  let minutesActive = activity.days[activity.days.length - 1].minutesActive;
+  let personalRecord = activity.days.map(day => day.minutesActive).sort((a,b) => b - a)[0]
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Today', 'Personal Record'],
+      datasets: [{
+        label: '',
+        data: [minutesActive, personalRecord],
+        backgroundColor: [colors.lime, colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Minutes Active Compared to All Time High',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let todaysMilesWalkedChart = (user) => {
+  let activity = user.activity;
+  let latestDate = activity.days[activity.days.length - 1].date;
+  let personalRecordDate = activity.days.map(day => day).sort((a,b) => b.numSteps - a.numSteps)[0].date
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Today', 'Personal Record'],
+      datasets: [{
+        label: '',
+        data: [activity.getMiles(latestDate), activity.getMiles(personalRecordDate)],
+        backgroundColor: [colors.lime, colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Miles Walked Compared to All Time High',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let comparedStepsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysSteps = activity.days[activity.days.length - 1].numSteps;
+  return {
+    type: 'bar',
+    data: {
+      labels: ['My Steps Today', 'FitLit Average'],
+      datasets:[{
+        label: `My Steps Today Compared to FitLit Average`,
+        data: [todaysSteps, activity.allUsersStepsAvg(lastRecordDate)],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `My Steps Today Compared to FitLit Average`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let comparedMinActiveChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let minutesActive = activity.days[activity.days.length - 1].minutesActive;
+  return {
+    type: 'bar',
+    data: {
+      labels: ['My Minutes Active Today', 'FitLit Average'],
+      datasets:[{
+        label: `My Minutes Active Today Compared to FitLit Average`,
+        data: [minutesActive, activity.allUsersMinutesAvg(lastRecordDate)],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `My Minutes Active Today Compared to FitLit Average`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let comparedFlightsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysStairs = activity.days[activity.days.length - 1].flightsOfStairs;
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Flights of Stairs Climbed Today', 'FitLit Average'],
+      datasets:[{
+        label: `Flights of Stairs Climbed Today Compared to FitLit Average`,
+        data: [todaysStairs, activity.allUsersStairsAvg(lastRecordDate)],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `Flights of Stairs Climbed Today Compared to FitLit Average`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let weeklyStepsChart = (user) => {
+  let activity = user.activity;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let weekAverages = lastWeekDates.map(date => activity.allUsersStepsAvg(date));
+  let userWeekSteps = lastWeekDays.map(day => day.numSteps);
+
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `My Past Week's Steps`,
+        data: userWeekSteps,
+        backgroundColor: colors.lightBlue,
+        borderColor: colors.lightBlue
+      },
+      {
+        label: `Other Users' Weekly Average Steps`,
+        data: weekAverages,
+        backgroundColor: colors.lime,
+        borderColor: colors.lime
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Weekly Steps Compared to Fitlit Average',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
+  };
+}
+
+let weeklyFlightsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysStairs = activity.days[activity.days.length - 1].flightsOfStairs;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let userWeekStairs = lastWeekDays.map(day => day.flightsOfStairs);
+
+  return {
+    type: 'bar',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Flights of Stairs Climbed Each Day This Week`,
+        data: userWeekStairs,
+        backgroundColor: [colors.lime, colors.blueWhite, colors.lightBlue, colors.darkBlue, colors.lightBlue, colors.blueWhite, colors.lime],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `Flights of Stairs Climbed Each Day This Week`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+
+let weeklyMinActiveChart = (user) => {
+  let activity = user.activity;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let weekAverages = lastWeekDates.map(date => activity.allUsersMinutesAvg(date));
+  let userWeekMinActive = lastWeekDays.map(day => day.minutesActive);
+
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Minutes Active This Week`,
+        data: userWeekMinActive,
+        backgroundColor: colors.lightBlue,
+        borderColor: colors.lightBlue
+      },
+      {
+        label: `Other Users' Minutes Active`,
+        data: weekAverages,
+        backgroundColor: colors.lime,
+        borderColor: colors.lime
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Weekly Steps Compared to Fitlit Average',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
+  };
+}
+
+
 export default {
   todaysIntakeChart,
   weeklyIntakeChart,
@@ -292,5 +630,14 @@ export default {
   weeklySleepHoursChart,
   weeklySleepQualityChart,
   avgSleepHoursChart,
-  avgSleepQualityChart
+  avgSleepQualityChart,
+  todaysNumOfStepsChart,
+  todaysMinActiveChart,
+  todaysMilesWalkedChart,
+  comparedStepsChart,
+  comparedMinActiveChart,
+  comparedFlightsChart,
+  weeklyStepsChart,
+  weeklyFlightsChart,
+  weeklyMinActiveChart,
 };
