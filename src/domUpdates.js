@@ -20,7 +20,7 @@ const makeCharts = (currentUser) => {
      "avgSleepQuality",
      "todaysNumOfSteps",
      "todaysMinActive",
-     // "todaysMilesWalked",
+     "todaysMilesWalked",
      // "comparedSteps",
      // "comparedMinActive",
      // "comparedFlights",

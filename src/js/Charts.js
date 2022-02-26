@@ -316,7 +316,7 @@ let todaysNumOfStepsChart = (user) => {
 
 let todaysMinActiveChart = (user) => {
   let activity = user.activity;
-  let todaysSteps = activity.days[activity.days.length - 1].minutesActive;
+  let minutesActive = activity.days[activity.days.length - 1].minutesActive;
   let personalRecord = activity.days.map(day => day.minutesActive).sort((a,b) => b - a)[0]
   return {
     type: 'bar',
@@ -324,7 +324,7 @@ let todaysMinActiveChart = (user) => {
       labels: ['Today', 'Personal Record'],
       datasets: [{
         label: '',
-        data: [todaysSteps, personalRecord],
+        data: [minutesActive, personalRecord],
         backgroundColor: [colors.lime, colors.darkBlue]
       }]
     },
@@ -335,7 +335,43 @@ let todaysMinActiveChart = (user) => {
         },
         title: {
           display: true,
-          text: 'My Minutes Active compared to all time high ',
+          text: 'My Minutes Active Compared to All Time High',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+let todaysMilesWalkedChart = (user) => {
+  let activity = user.activity;
+  let latestDate = activity.days[activity.days.length - 1].date;
+  let personalRecordDate = activity.days.map(day => day).sort((a,b) => b.numSteps - a.numSteps)[0].date
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Today', 'Personal Record'],
+      datasets: [{
+        label: '',
+        data: [activity.getMiles(latestDate), activity.getMiles(personalRecordDate)],
+        backgroundColor: [colors.lime, colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Miles Walked Compared to All Time High',
           padding: {
             bottom: 10
           }
@@ -361,7 +397,7 @@ export default {
   avgSleepQualityChart,
   todaysNumOfStepsChart,
   todaysMinActiveChart,
-  // todaysMilesWalkedChart,
+  todaysMilesWalkedChart,
   // comparedStepsChart,
   // comparedMinActiveChart,
   // comparedFlightsChart,
