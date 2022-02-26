@@ -284,6 +284,37 @@ let avgSleepQualityChart = (currentUser) => {
   };
 };
 
+let todaysNumOfStepsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysSteps = activity.days[activity.days.length - 1].numSteps;
+  console.log(lastRecordDate, todaysSteps, "<<<>>>>>test")
+  return {
+    type: 'doughnut',
+    data: {
+      labels: ['Total steps', 'Remaining to goal'],
+      datasets:[{
+        label: `Today's Total Steps`,
+        data: user.dailyStepGoal > todaysSteps ? [todaysSteps, user.dailyStepGoal - todaysSteps]
+                 : [todaysSteps],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Today\'s Total Steps Compared to Goal'
+        }
+      }
+    }
+  };
+}
+
 export default {
   todaysIntakeChart,
   weeklyIntakeChart,
@@ -292,5 +323,14 @@ export default {
   weeklySleepHoursChart,
   weeklySleepQualityChart,
   avgSleepHoursChart,
-  avgSleepQualityChart
+  avgSleepQualityChart,
+  todaysNumOfStepsChart,
+  // todaysMinActiveChart,
+  // todaysMilesWalkedChart,
+  // comparedStepsChart,
+  // comparedMinActiveChart,
+  // comparedFlightsChart,
+  // weeklyStepsChart,
+  // weeklyFlightsChart,
+  // weeklyMinActiveChart,
 };

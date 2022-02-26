@@ -8,7 +8,7 @@ import {
 import Hydration from './js/Hydration';
 import UserRepository from './js/UserRepository';
 import Sleep from './js/Sleep';
-
+import Activity from './js/Activity';
 import updateDOM from './domUpdates';
 
 const userName = document.querySelector('#userName');
@@ -35,6 +35,7 @@ const handleData = (data) => {
   const currentUser = getRandomUser(users);
   currentUser.hydration = new Hydration(data[3].hydrationData, currentUser.id);
   currentUser.sleep = new Sleep(data[1].sleepData, currentUser.id);
+  currentUser.activity = new Activity(data[2].activityData, currentUser);
   updateDOM(currentUser, users);
 }
 

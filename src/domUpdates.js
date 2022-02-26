@@ -17,7 +17,16 @@ const makeCharts = (currentUser) => {
      "weeklySleepHours",
      "weeklySleepQuality",
      "avgSleepHours",
-     "avgSleepQuality"
+     "avgSleepQuality",
+     "todaysNumOfSteps",
+     // "todaysMinActive",
+     // "todaysMilesWalked",
+     // "comparedSteps",
+     // "comparedMinActive",
+     // "comparedFlights",
+     // "weeklySteps",
+     // "weeklyFlights",
+     // "weeklyMinActive",
   ]
 
   myCharts.forEach(chart => {
