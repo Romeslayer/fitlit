@@ -27,7 +27,7 @@ main, .user-container {
   color: #1A1B41;
 }
 
-canvas {
+canvas, form {
   background-color: #F1FFE7;
   padding: 1em;
   border: 3px solid #BAFF29;
@@ -83,4 +83,21 @@ canvas {
 
 .widgets-section {
   display: flex;
+}
+
+.update-section {
+  padding: 1em;
+}
+
+.form-display-buttons {
+  text-align: center;
+}
+
+.form-display-buttons button {
+  font-size: 2em;
+  margin: .5em;
+}
+
+.form-section {
+
 }
