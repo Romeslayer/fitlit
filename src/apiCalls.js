@@ -1,7 +1,8 @@
 // Your fetch requests will live here!
 const getData = (fetchAPI) => {
   return fetch(`http://localhost:3001/api/v1/${fetchAPI}`)
-    .then(response => response.json());
+    .then(response => response.json())
+    .catch(e => console.log(e));
 }
 
 const postData = (fetchAPI, formData) => {
@@ -12,7 +13,7 @@ const postData = (fetchAPI, formData) => {
     body: JSON.stringify(formData)
   })
   .then(response => {
-    if !response.ok throw new Error('Please fill out all fields.')
+    if (!response.ok) throw new Error('Please fill out all fields.')
     return reponse.json()
   })
   .catch(e => console.log(e))
