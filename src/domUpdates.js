@@ -4,8 +4,9 @@ import charts from './js/Charts';
 
 let updateDOM = (currentUser, users) => {
   updateUser(currentUser, users);
-  displayStats(currentUser);
   makeCharts(currentUser);
+
+  displayStats(currentUser);
 }
 
 const makeCharts = (currentUser) => {
@@ -31,8 +32,11 @@ const makeCharts = (currentUser) => {
 
   myCharts.forEach(chart => {
     let chartConfig = charts[chart + 'Chart'](currentUser);
-    let canvas = document.querySelector(`#${chart}Chart`);
-    let setCanvas = new Chart(canvas, chartConfig)
+    let article = document.querySelector(`#${chart}`);
+    console.log(article);
+    article.innerHTML = `<canvas id="${chart}Chart"></canvas>`;
+    let canvas = article.querySelector('canvas');
+    let setCanvas = new Chart(canvas, chartConfig);
   });
 }
 
