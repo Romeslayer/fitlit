@@ -98,6 +98,27 @@ canvas, form {
   margin: .5em;
 }
 
-.form-section {
+.sleep-display{
+  background-color: #1A1B41;
+  color: #F1FFE7;
+}
 
+.hydration-display {
+  background-color: #6290C3;
+  color: #1A1B41;
+}
+
+.activity-display {
+  background-color: #BAFF29;
+  color: #1A1B41;
+}
+
+span .fa-stairs {
+  position: relative;
+  margin-left: -13px;
+  top: 3px;
+}
+
+span .fa-person-running {
+  position: relative;
 }
