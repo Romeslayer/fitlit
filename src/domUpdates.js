@@ -22,7 +22,7 @@ const makeCharts = (currentUser) => {
      "todaysMinActive",
      "todaysMilesWalked",
      "comparedSteps",
-     // "comparedMinActive",
+     "comparedMinActive",
      // "comparedFlights",
      // "weeklySteps",
      // "weeklyFlights",
