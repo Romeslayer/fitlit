@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
+    <script src="https://kit.fontawesome.com/56a0a5a19c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -17,19 +18,19 @@
     <main>
       <section class="update-section">
         <article class="form-display-buttons">
-          <button class="hydration-display"></button>
-          <button class="sleep-display"></button>
-          <button class="activity-display"></button>
+          <button class="hydration-display">+<i class="fa fa-droplet"></i></button>
+          <button class="sleep-display">+<i class="fa fa-moon"></i></button>
+          <button class="activity-display">+<span><i class="fa fa-person-running"></i><i class="fa fa-stairs"></i></span></button>
         </article>
         <article class="form-section">
-          <form name="hydration" class="hydration-form" id="hydrationForm">
+          <form name="hydration" class="hydration-form hidden" id="hydrationForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numOunces">How many Ounces?</label>
             <input type="number" name="numOunces">
             <input type="submit">
           </form>
-          <form name="sleep" class="sleep-form" id="sleepForm">
+          <form name="sleep" class="sleep-form hidden" id="sleepForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="hoursSlept">How many hours did you sleep?</label>
@@ -39,7 +40,7 @@
             <output id="sleepQualityOutput">2.5</output>
             <input type="submit">
           </form>
-          <form name="activity" class="activity-form" id="activityForm">
+          <form name="activity" class="activity-form hidden" id="activityForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numSteps">How many steps did you take?</label>
