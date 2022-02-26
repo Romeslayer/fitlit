@@ -288,7 +288,6 @@ let todaysNumOfStepsChart = (user) => {
   let activity = user.activity;
   let lastRecordDate = activity.days[activity.days.length - 1].date;
   let todaysSteps = activity.days[activity.days.length - 1].numSteps;
-  console.log(lastRecordDate, todaysSteps, "<<<>>>>>test")
   return {
     type: 'doughnut',
     data: {
@@ -315,6 +314,42 @@ let todaysNumOfStepsChart = (user) => {
   };
 }
 
+let todaysMinActiveChart = (user) => {
+  let activity = user.activity;
+  let todaysSteps = activity.days[activity.days.length - 1].minutesActive;
+  let personalRecord = activity.days.map(day => day.minutesActive).sort((a,b) => b - a)[0]
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Today', 'Personal Record'],
+      datasets: [{
+        label: '',
+        data: [todaysSteps, personalRecord],
+        backgroundColor: [colors.lime, colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Minutes Active compared to all time high ',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
 export default {
   todaysIntakeChart,
   weeklyIntakeChart,
@@ -325,7 +360,7 @@ export default {
   avgSleepHoursChart,
   avgSleepQualityChart,
   todaysNumOfStepsChart,
-  // todaysMinActiveChart,
+  todaysMinActiveChart,
   // todaysMilesWalkedChart,
   // comparedStepsChart,
   // comparedMinActiveChart,
