@@ -16,6 +16,43 @@
     </header>
     <div class="background"></div>
     <main>
+      <section class="update-section">
+        <article class="form-display-buttons">
+          <button class="hydration-display"></button>
+          <button class="sleep-display"></button>
+          <button class="activity-display"></button>
+        </article>
+        <article class="form-section">
+          <form name="hydration" class="hydration-form" id="hydrationForm">
+            <label for="date">What day?</label>
+            <input type="date" name="date">
+            <label for="numOunces">How many Ounces?</label>
+            <input type="number" name="numOunces">
+            <input type="submit">
+          </form>
+          <form name="sleep" class="sleep-form" id="sleepForm">
+            <label for="date">What day?</label>
+            <input type="date" name="date">
+            <label for="hoursSlept">How many hours did you sleep?</label>
+            <input type="number" name="hoursSlept">
+            <label for="sleepQuality">How well did you sleep 1(worst) - 5(best)?</label>
+            <input type="range" step=".1" min="0" max="5" name="sleepQuality" oninput="sleepQualityOutput.value = sleepQualityInput.value" id="sleepQualityInput">
+            <output id="sleepQualityOutput">2.5</output>
+            <input type="submit">
+          </form>
+          <form name="activity" class="activity-form" id="activityForm">
+            <label for="date">What day?</label>
+            <input type="date" name="date">
+            <label for="numSteps">How many steps did you take?</label>
+            <input type="number" name="numSteps">
+            <label for="minutesActive">How many minutes were you active for?</label>
+            <input type="number" name="minutesActive">
+            <label for="flightsOfStairs">How many flights of stairs did you climb?</label>
+            <input type="number" name="flightsOfStairs">
+            <input type="submit">
+          </form>
+        </article>
+      </section>
       <section class="stats-section" id="statsSection">
         <article id="todaysIntake">
           <canvas id="todaysIntakeChart"></canvas>
