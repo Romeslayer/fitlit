@@ -13,8 +13,8 @@ const postData = (fetchAPI, formData) => {
     body: JSON.stringify(formData)
   })
   .then(response => {
-    if (!response.ok) throw new Error('Please fill out all fields.')
-    return reponse.json()
+    if (!response.ok) throw new Error('Please fill out all fields.');
+    return response.json()
   })
   .catch(e => console.log(e))
 }
