@@ -24,9 +24,9 @@ const makeCharts = (currentUser) => {
      "comparedSteps",
      "comparedMinActive",
      "comparedFlights",
-     // "weeklySteps",
-     // "weeklyFlights",
-     // "weeklyMinActive",
+     "weeklySteps",
+     "weeklyFlights",
+     "weeklyMinActive",
   ]
 
   myCharts.forEach(chart => {

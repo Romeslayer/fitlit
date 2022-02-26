@@ -497,6 +497,131 @@ let comparedFlightsChart = (user) => {
   };
 }
 
+let weeklyStepsChart = (user) => {
+  let activity = user.activity;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let weekAverages = lastWeekDates.map(date => activity.allUsersStepsAvg(date));
+  let userWeekSteps = lastWeekDays.map(day => day.numSteps);
+
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `My Past Week's Steps`,
+        data: userWeekSteps,
+        backgroundColor: colors.lightBlue,
+        borderColor: colors.lightBlue
+      },
+      {
+        label: `Other Users' Weekly Average Steps`,
+        data: weekAverages,
+        backgroundColor: colors.lime,
+        borderColor: colors.lime
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Weekly Steps Compared to Fitlit Average',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
+  };
+}
+
+let weeklyFlightsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysStairs = activity.days[activity.days.length - 1].flightsOfStairs;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let userWeekStairs = lastWeekDays.map(day => day.flightsOfStairs);
+
+  return {
+    type: 'bar',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Flights of Stairs Climbed Each Day This Week`,
+        data: userWeekStairs,
+        backgroundColor: [colors.lime, colors.blueWhite, colors.lightBlue, colors.darkBlue, colors.lightBlue, colors.blueWhite, colors.lime],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `Flights of Stairs Climbed Each Day This Week`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
+
+let weeklyMinActiveChart = (user) => {
+  let activity = user.activity;
+  let lastWeekDays = activity.days.slice(-7);
+  let lastWeekDates = lastWeekDays.map(day => day.date);
+  let weekAverages = lastWeekDates.map(date => activity.allUsersMinutesAvg(date));
+  let userWeekMinActive = lastWeekDays.map(day => day.minutesActive);
+
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Minutes Active This Week`,
+        data: userWeekMinActive,
+        backgroundColor: colors.lightBlue,
+        borderColor: colors.lightBlue
+      },
+      {
+        label: `Other Users' Minutes Active`,
+        data: weekAverages,
+        backgroundColor: colors.lime,
+        borderColor: colors.lime
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'My Weekly Steps Compared to Fitlit Average',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
+  };
+}
+
+
 export default {
   todaysIntakeChart,
   weeklyIntakeChart,
@@ -512,7 +637,7 @@ export default {
   comparedStepsChart,
   comparedMinActiveChart,
   comparedFlightsChart,
-  // weeklyStepsChart,
-  // weeklyFlightsChart,
-  // weeklyMinActiveChart,
+  weeklyStepsChart,
+  weeklyFlightsChart,
+  weeklyMinActiveChart,
 };
