@@ -460,6 +460,43 @@ let comparedMinActiveChart = (user) => {
   };
 }
 
+let comparedFlightsChart = (user) => {
+  let activity = user.activity;
+  let lastRecordDate = activity.days[activity.days.length - 1].date;
+  let todaysStairs = activity.days[activity.days.length - 1].flightsOfStairs;
+  return {
+    type: 'bar',
+    data: {
+      labels: ['Flights of Stairs Climbed Today', 'FitLit Average'],
+      datasets:[{
+        label: `Flights of Stairs Climbed Today Compared to FitLit Average`,
+        data: [todaysStairs, activity.allUsersStairsAvg(lastRecordDate)],
+        backgroundColor: [colors.lime, colors.blueWhite],
+        borderColor: [colors.darkBlue]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: `Flights of Stairs Climbed Today Compared to FitLit Average`,
+          padding: {
+            bottom: 10
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+}
+
 export default {
   todaysIntakeChart,
   weeklyIntakeChart,
@@ -474,7 +511,7 @@ export default {
   todaysMilesWalkedChart,
   comparedStepsChart,
   comparedMinActiveChart,
-  // comparedFlightsChart,
+  comparedFlightsChart,
   // weeklyStepsChart,
   // weeklyFlightsChart,
   // weeklyMinActiveChart,
