@@ -16,6 +16,33 @@
     </header>
     <div class="background"></div>
     <main>
+      <section class="update-section">
+        <article class="form-display-buttons">
+          <button class="hydration-display"></button>
+          <button class="sleep-display"></button>
+          <button class="activity-display"></button>
+        </article>
+        <article class="form-section">
+          <form class="hydration-form">
+            <input type="date" name="date">
+            <input type="number" name="numOunces">
+            <input type="submit">
+          </form>
+          <form class="sleep-form">
+            <input type="date" name="date">
+            <input type="number" name="hoursSlept">
+            <input type="number" name="sleepQuality">
+            <input type="submit">
+          </form>
+          <form class="activity-form">
+            <input type="date" name="date">
+            <input type="number" name="numSteps">
+            <input type="number" name="minutesActive">
+            <input type="number" name="flightsOfStairs">
+            <input type="submit">
+          </form>
+        </article>
+      </section>
       <section class="stats-section" id="statsSection">
         <article id="todaysIntake">
           <canvas id="todaysIntakeChart"></canvas>
