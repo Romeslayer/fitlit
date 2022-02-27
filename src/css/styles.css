@@ -23,6 +23,11 @@ header {
   background-color: #1A1B41;
 }
 
+form {
+  max-width: 80%;
+  margin: auto;
+}
+
 main, .user-container {
   color: #1A1B41;
 }
@@ -121,4 +126,9 @@ span .fa-stairs {
 
 span .fa-person-running {
   position: relative;
+}
+
+form input {
+  clear: both;
+  display: block;
 }
