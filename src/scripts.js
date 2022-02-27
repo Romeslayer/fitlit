@@ -19,6 +19,23 @@ const statsSection = document.querySelector('#statsSection');
 const hydrationForm = document.querySelector('#hydrationForm');
 const sleepForm = document.querySelector('#sleepForm');
 const activityForm = document.querySelector('#activityForm');
+const todaysIntake = document.querySelector('#todaysIntake');
+const weeklyIntake = document.querySelector('#weeklyIntake');
+const todaysSleepHours = document.querySelector('#todaysSleepHours');
+const todaysSleepQuality = document.querySelector('#todaysSleepQuality');
+const weeklySleepHours = document.querySelector('#weeklySleepHours');
+const weeklySleepQuality = document.querySelector('#weeklySleepQuality');
+const avgSleepHours = document.querySelector('#avgSleepHours');
+const avgSleepQuality = document.querySelector('#avgSleepQuality');
+const todaysNumOfSteps = document.querySelector('#todaysNumOfSteps');
+const todaysMinActive = document.querySelector('#todaysMinActive');
+const todaysMilesWalked = document.querySelector('#todaysMilesWalked');
+const comparedSteps = document.querySelector('#comparedSteps');
+const comparedMinActive = document.querySelector('#comparedMinActive');
+const comparedFlights = document.querySelector('#comparedFlights');
+const weeklySteps = document.querySelector('#weeklySteps');
+const weeklyFlights = document.querySelector('#weeklyFlights');
+const weeklyMinActive = document.querySelector('#weeklyMinActive');
 
 
 
@@ -61,7 +78,7 @@ const handleData = (data) => {
         date: formData.get('date').split('-').join('/'),
         numOunces: formData.get('numOunces')
       }
-      console.log(postData(e.target.name, newHydrate));
+      postData(e.target.name, newHydrate);
       currentUser.hydration.days.push(newHydrate);
       currentUser.hydration.days.sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
