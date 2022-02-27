@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
+    <script src="https://kit.fontawesome.com/56a0a5a19c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -10,27 +11,26 @@
       <h1 id="userName">Welcome User</h1>
       <p id="stepGoal">Your step goal: / Average: </p>
       <section class="user-container"><img id="userLogo" />
-        <section class="info-card hidden" id="infoCard">
-        </section>
+        <section class="info-card hidden" id="infoCard"></section>
       </section>
     </header>
     <div class="background"></div>
     <main>
       <section class="update-section">
         <article class="form-display-buttons">
-          <button class="hydration-display"></button>
-          <button class="sleep-display"></button>
-          <button class="activity-display"></button>
+          <button class="hydration-display">+<i class="fa fa-droplet"></i></button>
+          <button class="sleep-display">+<i class="fa fa-moon"></i></button>
+          <button class="activity-display">+<span><i class="fa fa-person-running"></i><i class="fa fa-stairs"></i></span></button>
         </article>
         <article class="form-section">
-          <form name="hydration" class="hydration-form" id="hydrationForm">
+          <form name="hydration" class="hydration-form hidden" id="hydrationForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numOunces">How many Ounces?</label>
             <input type="number" name="numOunces">
             <input type="submit">
           </form>
-          <form name="sleep" class="sleep-form" id="sleepForm">
+          <form name="sleep" class="sleep-form hidden" id="sleepForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="hoursSlept">How many hours did you sleep?</label>
@@ -40,7 +40,7 @@
             <output id="sleepQualityOutput">2.5</output>
             <input type="submit">
           </form>
-          <form name="activity" class="activity-form" id="activityForm">
+          <form name="activity" class="activity-form hidden" id="activityForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numSteps">How many steps did you take?</label>
@@ -54,60 +54,25 @@
         </article>
       </section>
       <section class="stats-section" id="statsSection">
-        <article id="todaysIntake">
-          <canvas id="todaysIntakeChart"></canvas>
-        </article>
-        <article id="weeklyIntake">
-          <canvas id="weeklyIntakeChart"></canvas>
-        </article>
-        <article id="todaysSleepHours">
-          <canvas id="todaysSleepHoursChart"></canvas>
-        </article>
-        <article id="todaysSleepQuality">
-          <canvas id="todaysSleepQualityChart"></canvas>
-        </article>
-        <article id="weeklySleepHours">
-          <canvas id="weeklySleepHoursChart"></canvas>
-        </article>
-        <article id="weeklySleepQuality">
-          <canvas id="weeklySleepQualityChart"></canvas>
-        </article>
-        <article id="avgSleepHours">
-          <canvas id="avgSleepHoursChart"></canvas>
-        </article>
-        <article id="avgSleepQuality">
-          <canvas id="avgSleepQualityChart"></canvas>
-        </article>
-        <article id="todaysNumOfSteps">
-          <canvas id="todaysNumOfStepsChart"></canvas>
-        </article>
-        <article id="todaysMinActive">
-          <canvas id="todaysMinActiveChart"></canvas>
-        </article>
-        <article id="todaysMilesWalked">
-          <canvas id="todaysMilesWalkedChart"></canvas>
-        </article>
-        <article id="comparedSteps">
-          <canvas id="comparedStepsChart"></canvas>
-        </article>
-        <article id="comparedMinActive">
-          <canvas id="comparedMinActiveChart"></canvas>
-        </article>
-        <article id="comparedFlights">
-          <canvas id="comparedFlightsChart"></canvas>
-        </article>
-        <article id="weeklySteps">
-          <canvas id="weeklyStepsChart"></canvas>
-        </article>
-        <article id="weeklyFlights">
-          <canvas id="weeklyFlightsChart"></canvas>
-        </article>
-        <article id="weeklyMinActive">
-          <canvas id="weeklyMinActiveChart"></canvas>
-        </article>
+        <article id="todaysIntake"></article>
+        <article id="weeklyIntake"></article>
+        <article id="todaysSleepHours"></article>
+        <article id="todaysSleepQuality"></article>
+        <article id="weeklySleepHours"></article>
+        <article id="weeklySleepQuality"></article>
+        <article id="avgSleepHours"></article>
+        <article id="avgSleepQuality"></article>
+        <article id="todaysNumOfSteps"></article>
+        <article id="todaysMinActive"></article>
+        <article id="todaysMilesWalked"></article>
+        <article id="comparedSteps"></article>
+        <article id="comparedMinActive"></article>
+        <article id="comparedFlights"></article>
+        <article id="weeklySteps"></article>
+        <article id="weeklyFlights"></article>
+        <article id="weeklyMinActive"></article>
       </section>
-      <section id="competeSection">
-      </section>
+      <section id="competeSection"></section>
       <section class="widgets-section">
         <article id="weatherSection"></article>
         <article id="improveSection"></article>

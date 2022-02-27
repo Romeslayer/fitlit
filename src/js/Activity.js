@@ -7,32 +7,7 @@ class Activity {
     this.usersStepsAvg = {};
     this.usersMinutesAvg = {};
 
-    data.forEach(day => {
-      if (!this.usersStairsAvg[day.date]) {
-        this.usersStairsAvg[day.date] = 0;
-        this.usersStepsAvg[day.date] = 0;
-        this.usersMinutesAvg[day.date] = 0;
-      }
-    });
-    Object.keys(this.usersStairsAvg).forEach(key => {
-      let days = data.filter(day => key === day.date);
-      let stairAvg = days.reduce((acc, day) => {
-        return acc + day.flightsOfStairs;
-      }, 0) / days.length;
-      this.usersStairsAvg[key] = Math.floor(stairAvg);
-
-      let stepsAvg = days.reduce((acc, day) => {
-        return acc + day.numSteps;
-      }, 0) / days.length;
-      this.usersStepsAvg[key] = Math.floor(stepsAvg);
-
-      let minutesAvg = days.reduce((acc, day) => {
-        return acc + day.minutesActive;
-      }, 0) / days.length;
-      this.usersMinutesAvg[key] = Math.floor(minutesAvg);
-    });
-
-
+    this.setAverages(data, user);
   }
   getMiles(date) {
     let result = this.days.find(day => day.date === date);
@@ -70,6 +45,32 @@ class Activity {
   }
   allUsersMinutesAvg(date) {
     return this.usersMinutesAvg[date];
+  }
+  setAverages(data, user) {
+    data.forEach(day => {
+      if (!this.usersStairsAvg[day.date]) {
+        this.usersStairsAvg[day.date] = 0;
+        this.usersStepsAvg[day.date] = 0;
+        this.usersMinutesAvg[day.date] = 0;
+      }
+    });
+    Object.keys(this.usersStairsAvg).forEach(key => {
+      let days = data.filter(day => key === day.date);
+      let stairAvg = days.reduce((acc, day) => {
+        return acc + day.flightsOfStairs;
+      }, 0) / days.length;
+      this.usersStairsAvg[key] = Math.floor(stairAvg);
+
+      let stepsAvg = days.reduce((acc, day) => {
+        return acc + day.numSteps;
+      }, 0) / days.length;
+      this.usersStepsAvg[key] = Math.floor(stepsAvg);
+
+      let minutesAvg = days.reduce((acc, day) => {
+        return acc + day.minutesActive;
+      }, 0) / days.length;
+      this.usersMinutesAvg[key] = Math.floor(minutesAvg);
+    });
   }
 }
 

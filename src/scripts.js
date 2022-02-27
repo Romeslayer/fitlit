@@ -20,6 +20,8 @@ const hydrationForm = document.querySelector('#hydrationForm');
 const sleepForm = document.querySelector('#sleepForm');
 const activityForm = document.querySelector('#activityForm');
 
+
+
 const fetchData = () => {
   Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
     handleData(data);
@@ -46,7 +48,11 @@ const handleData = (data) => {
         minutesActive: formData.get('minutesActive'),
         flightsOfStairs: formData.get('flightsOfStairs')
       }
-    postData(e.target.name, newActivity);
+      currentUser.activity.days.push(newActivity);
+      currentUser.activity.days.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date) ;
+      });
+      postData(e.target.name, newActivity);
     }
 
     if (e.target.name === 'hydration') {
@@ -55,8 +61,12 @@ const handleData = (data) => {
         date: formData.get('date').split('-').join('/'),
         numOunces: formData.get('numOunces')
       }
-
-    postData(e.target.name, newHydrate);
+      console.log(postData(e.target.name, newHydrate));
+      currentUser.hydration.days.push(newHydrate);
+      currentUser.hydration.days.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      postData(e.target.name, newHydrate);
     }
 
     if (e.target.name === 'sleep') {
@@ -66,11 +76,14 @@ const handleData = (data) => {
         hoursSlept: formData.get('hoursSlept'),
         sleepQuality: formData.get('sleepQuality')
       }
-
-    postData(e.target.name, newSleep);
+      currentUser.sleep.days.push(newSleep);
+      currentUser.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      postData(e.target.name, newSleep);
     }
-
-  e.target.reset();
+    updateDOM(currentUser, users);
+    e.target.reset();
   }
 
 hydrationForm.onsubmit = sendData;
@@ -81,5 +94,6 @@ activityForm.onsubmit = sendData;
 const getRandomUser = (users) => {
   return users.getUser(Math.floor(Math.random() * users.users.length - 1));
 }
+
 
 window.onload = fetchData;
