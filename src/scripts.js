@@ -19,7 +19,8 @@ const statsSection = document.querySelector('#statsSection');
 const hydrationForm = document.querySelector('#hydrationForm');
 const sleepForm = document.querySelector('#sleepForm');
 const activityForm = document.querySelector('#activityForm');
-const displayButtons = document.querySelector('.form-display-buttons');
+
+
 
 const fetchData = () => {
   Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
@@ -95,31 +96,4 @@ const getRandomUser = (users) => {
 }
 
 
-
-// **This logic isn't working**
-const hideForms = () => {
-  activityForm.classList = 'activity-form hidden';
-  hydrationForm.classList = 'hydration-form hidden';
-  sleepForm.classList = 'sleep-form hidden';
-  // let forms = document.querySelectorAll('form');
-  // forms.forEach(form => {
-  //   if (!form.classList.value.includes('hidden')) {
-  //     form.classList += ' hidden';
-  //   }
-  //   // form.classList.add('hidden');
-  // });
-}
-
 window.onload = fetchData;
-displayButtons.addEventListener('click', (e) => {
-  //e.preventDefault();
-  hideForms();
-  let classes = e.target.classList;
-  if (classes.value.includes('hydration')) {
-    document.querySelector('.hydration-form').classList.remove('hidden');
-  } else if (classes.value.includes('sleep')) {
-    document.querySelector('.sleep-form').classList.remove('hidden');
-  } else if (classes.value.includes('activity')) {
-    document.querySelector('.activity-form').classList.remove('hidden');
-  }
-})

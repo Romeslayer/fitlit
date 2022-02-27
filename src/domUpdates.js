@@ -1,6 +1,7 @@
 import Chart from 'chart.js/auto';
 import charts from './js/Charts';
 
+const displayButtons = document.querySelector('.form-display-buttons');
 
 let updateDOM = (currentUser, users) => {
   updateUser(currentUser, users);
@@ -75,5 +76,23 @@ const displayStats = (currentUser) => {
   currentUser.sleep.getWeekSleep(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepHours.querySelector('canvas').innerHTML += `<p>On ${day.date}, you slept ${day.hoursSlept} hours.`);
   currentUser.sleep.getWeekQuality(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepQuality.querySelector('canvas').innerHTML += `<p>On ${day.date}, your sleep quality was: ${day.sleepQuality}.`);
 }
+
+const hideForms = () => {
+  activityForm.classList = 'activity-form hidden';
+  hydrationForm.classList = 'hydration-form hidden';
+  sleepForm.classList = 'sleep-form hidden';
+}
+
+displayButtons.addEventListener('click', (e) => {
+  hideForms();
+  let classes = e.target.closest('button').classList;
+  if (classes.value.includes('hydration')) {
+    hydrationForm.classList.remove('hidden');
+  } else if (classes.value.includes('sleep')) {
+    sleepForm.classList.remove('hidden');
+  } else if (classes.value.includes('activity')) {
+    activityForm.classList.remove('hidden');
+  }
+});
 
 export default updateDOM;
