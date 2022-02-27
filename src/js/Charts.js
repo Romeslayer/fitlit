@@ -9,16 +9,16 @@ let colors = {
 
 let todaysIntakeChart = (currentUser) => {
   let hydration = currentUser.hydration;
-  let lastRecordDate = hydration.days[hydration.days.length - 1].date;
-  let todaysIntake = hydration.getDaily(lastRecordDate);
+  let lastRecordedDate = hydration.days[hydration.days.length - 1].date;
+  let personalRecord = hydration.days.map(day => day.numOunces).sort((a,b) => b - a)[0]
+  let todaysIntake = hydration.getDaily(lastRecordedDate);
   return {
     type: 'doughnut',
     data: {
-      labels: ['Total Intake', 'Remaining Intake'],
+      labels: ['Total Intake', 'Remaining oz to Record'],
       datasets:[{
         label: `Today's Intake`,
-        data: hydration.getAverage() > todaysIntake ? [todaysIntake, hydration.getAverage() - todaysIntake]
-                 : [todaysIntake],
+        data: [todaysIntake, personalRecord - todaysIntake],
         backgroundColor: [
           colors.lightBlue, colors.transparent
         ],
@@ -34,7 +34,7 @@ let todaysIntakeChart = (currentUser) => {
         },
         title: {
           display: true,
-          text: 'Today\'s Fluid intake (oz)'
+          text: `Today\'s Fluid Intake is ${todaysIntake}oz / ${personalRecord}oz record`
         }
       }
     }
@@ -81,16 +81,16 @@ let weeklyIntakeChart = (currentUser) => {
 
 let todaysSleepHoursChart = (currentUser) => {
   let sleep = currentUser.sleep;
-  let lastRecordDate = sleep.days[sleep.days.length - 1].date;
-  let todaysSleepHours = sleep.getSleep(lastRecordDate);
+  let lastRecordedDate = sleep.days[sleep.days.length - 1].date;
+  let personalRecord = sleep.days.map(day => day.hoursSlept).sort((a,b) => b - a)[0]
+  let todaysSleepHours = sleep.getSleep(lastRecordedDate);
   return {
     type: 'doughnut',
     data: {
-      labels: ['Total Sleep', 'Sleep Deficiency'],
+      labels: ['Total Hours Slept', 'Hours to Record'],
       datasets:[{
         label: `Today's Sleep`,
-        data: sleep.getAverage() > todaysSleepHours ? [todaysSleepHours, sleep.getAverage() - todaysSleepHours]
-                 : [todaysSleepHours],
+        data: [todaysSleepHours, personalRecord - todaysSleepHours],
         backgroundColor: [colors.darkBlue, colors.lime],
         borderColor: [colors.lightBlue]
       }]
@@ -102,7 +102,7 @@ let todaysSleepHoursChart = (currentUser) => {
         },
         title: {
           display: true,
-          text: 'Hours Slept Last Night'
+          text: `Slept for ${todaysSleepHours}hrs Last Night vs A Record of ${personalRecord}hrs`
         }
       }
     }
@@ -119,8 +119,7 @@ let todaysSleepQualityChart = (currentUser) => {
       labels: ['Sleep Quality', 'Sleep Quality Deficiency'],
       datasets:[{
         label: `Today's Sleep Quality`,
-        data: sleep.getAverageQuality() > todaysSleepQuality ? [todaysSleepQuality, sleep.getAverageQuality() - todaysSleepQuality]
-                 : [todaysSleepQuality],
+        data: [todaysSleepQuality, 5 - todaysSleepQuality],
         backgroundColor: [colors.lime, colors.blueWhite],
         borderColor: [colors.darkBlue]
       }]
@@ -132,7 +131,7 @@ let todaysSleepQualityChart = (currentUser) => {
         },
         title: {
           display: true,
-          text: 'Last Night\'s Sleep Quality'
+          text: `Last Night\'s Sleep Quality was ${todaysSleepQuality} out of 5`
         }
       }
     }
@@ -307,7 +306,7 @@ let todaysNumOfStepsChart = (user) => {
         },
         title: {
           display: true,
-          text: 'Today\'s Total Steps Compared to Goal'
+          text: `Today\'s Total Steps: ${todaysSteps} / ${user.dailyStepGoal} Goal`
         }
       }
     }
