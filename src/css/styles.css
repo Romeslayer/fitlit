@@ -23,8 +23,17 @@ header {
   background-color: #1A1B41;
 }
 
+h2 {
+  padding-right: 1em;
+}
+
 form {
   max-width: 80%;
+  margin: auto;
+}
+
+main {
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -131,4 +140,26 @@ span .fa-person-running {
 form input {
   clear: both;
   display: block;
+}
+
+.stats-section article {
+  width: 80%;
+}
+
+@media (min-width: 680px) {
+  .stats-section article {
+    width: 40%
+  }
+  .stats-section .week-view {
+    width: 70%;
+  }
+}
+
+@media (min-width: 880px) {
+  .stats-section article {
+    width: 30%;
+  }
+  .stats-section .week-view {
+    width: 60%;
+  }
 }
