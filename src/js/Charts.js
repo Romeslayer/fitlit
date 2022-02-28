@@ -316,7 +316,7 @@ let todaysNumOfStepsChart = (user) => {
 let todaysMinActiveChart = (user) => {
   let activity = user.activity;
   let minutesActive = activity.days[activity.days.length - 1].minutesActive;
-  let personalRecord = activity.days.map(day => day.minutesActive).sort((a,b) => b - a)[0]
+  let personalRecord = activity.days.map(day => day.minutesActive).sort((a,b) => b - a)[0];
   return {
     type: 'bar',
     data: {
@@ -352,7 +352,7 @@ let todaysMinActiveChart = (user) => {
 let todaysMilesWalkedChart = (user) => {
   let activity = user.activity;
   let latestDate = activity.days[activity.days.length - 1].date;
-  let personalRecordDate = activity.days.map(day => day).sort((a,b) => b.numSteps - a.numSteps)[0].date
+  let personalRecordDate = activity.days.map(day => day).sort((a,b) => b.numSteps - a.numSteps)[0].date;
   return {
     type: 'bar',
     data: {
@@ -610,7 +610,7 @@ let weeklyMinActiveChart = (user) => {
         },
         title: {
           display: true,
-          text: 'My Weekly Steps Compared to Fitlit Average',
+          text: 'My Weekly Minutes Active Compared to Fitlit Average',
           padding: {
             bottom: 10
           }
