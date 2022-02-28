@@ -11,10 +11,11 @@ import Hydration from './js/Hydration';
 import UserRepository from './js/UserRepository';
 import Sleep from './js/Sleep';
 import Activity from './js/Activity';
-import updateDOM from './domUpdates';
+import { updateDOM, showForms } from './domUpdates';
 const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
 const infoCard = document.querySelector('#infoCard');
+const displayButtons = document.querySelector('.form-display-buttons');
 const statsSection = document.querySelector('#statsSection');
 const hydrationForm = document.querySelector('#hydrationForm');
 const sleepForm = document.querySelector('#sleepForm');
@@ -114,3 +115,4 @@ const getRandomUser = (users) => {
 
 
 window.onload = fetchData;
+displayButtons.onclick = showForms;

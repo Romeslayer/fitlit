@@ -1,8 +1,6 @@
 import Chart from 'chart.js/auto';
 import charts from './js/Charts';
 
-const displayButtons = document.querySelector('.form-display-buttons');
-
 let updateDOM = (currentUser, users) => {
   updateUser(currentUser, users);
   makeCharts(currentUser);
@@ -103,16 +101,23 @@ const hideForms = () => {
   sleepForm.classList = 'sleep-form hidden';
 }
 
-displayButtons.addEventListener('click', (e) => {
-  hideForms();
+const showForms = (e) => {
   let classes = e.target.closest('button').classList;
-  if (classes.value.includes('hydration')) {
+  if (classes.value.includes('hydration') && hydrationForm.classList.value.includes('hidden')) {
+    hideForms();
     hydrationForm.classList.remove('hidden');
-  } else if (classes.value.includes('sleep')) {
+  } else if (classes.value.includes('sleep') && sleepForm.classList.value.includes('hidden')) {
+    hideForms();
     sleepForm.classList.remove('hidden');
-  } else if (classes.value.includes('activity')) {
+  } else if (classes.value.includes('activity') && activityForm.classList.value.includes('hidden')) {
+    hideForms();
     activityForm.classList.remove('hidden');
+  } else {
+    hideForms();
   }
-});
+};
 
-export default updateDOM;
+export {
+  updateDOM,
+  showForms
+};
