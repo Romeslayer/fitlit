@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import charts from './js/Charts';
-
+const displayButtons = document.querySelector('.form-display-buttons');
 let updateDOM = (currentUser, users) => {
   updateUser(currentUser, users);
   makeCharts(currentUser);
@@ -42,6 +42,7 @@ const makeCharts = (currentUser) => {
 
 const updateUser = (currentUser, users) => {
   let friends = `Friends: `;
+  userLogo.alt = "Avatar";
   userName.innerText = `Welcome ${currentUser.getName()}`;
   stepGoal.innerText = `Your step goal: ${currentUser.dailyStepGoal} / Average: ${users.averageStepGoal()}`;
   currentUser.friends.forEach(friend => {
@@ -96,22 +97,44 @@ const displayStats = (currentUser) => {
 };
 
 const hideForms = () => {
-  activityForm.classList = 'activity-form hidden';
-  hydrationForm.classList = 'hydration-form hidden';
-  sleepForm.classList = 'sleep-form hidden';
+  activityForm.ariaHidden = 'true';
+  hydrationForm.ariaHidden = 'true';
+  sleepForm.ariaHidden = 'true';
+  displayButtons.childNodes.forEach(button => button.ariaExpanded = 'false');
+  displayButtons.childNodes.forEach(button => {
+    if(button.ariaLabel) {
+      let label = button.ariaLabel.split(' ');
+      label[0] = 'Open';
+      button.ariaLabel = label.join(' ');
+    }
+  });
 }
 
 const showForms = (e) => {
+  let buttonControl = e.target.closest('button');
   let classes = e.target.closest('button').classList;
-  if (classes.value.includes('hydration') && hydrationForm.classList.value.includes('hidden')) {
+
+  if (classes.value.includes('hydration') && JSON.parse(hydrationForm.ariaHidden)) {
     hideForms();
-    hydrationForm.classList.remove('hidden');
-  } else if (classes.value.includes('sleep') && sleepForm.classList.value.includes('hidden')) {
+    hydrationForm.ariaHidden = 'false';
+    buttonControl.ariaExpanded = 'true';
+    let label = buttonControl.ariaLabel.split(' ');
+    label[0] = 'Close'
+    buttonControl.ariaLabel = label.join(' ');
+  } else if (classes.value.includes('sleep') && JSON.parse(sleepForm.ariaHidden)) {
     hideForms();
-    sleepForm.classList.remove('hidden');
-  } else if (classes.value.includes('activity') && activityForm.classList.value.includes('hidden')) {
+    sleepForm.ariaHidden = 'false';
+    buttonControl.ariaExpanded = 'true';
+    let label = buttonControl.ariaLabel.split(' ');
+    label[0] = 'Close'
+    buttonControl.ariaLabel = label.join(' ');
+  } else if (classes.value.includes('activity') && JSON.parse(activityForm.ariaHidden)) {
     hideForms();
-    activityForm.classList.remove('hidden');
+    activityForm.ariaHidden = 'false';
+    buttonControl.ariaExpanded = 'true';
+    let label = buttonControl.ariaLabel.split(' ');
+    label[0] = 'Close'
+    buttonControl.ariaLabel = label.join(' ');
   } else {
     hideForms();
   }
