@@ -32,6 +32,7 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - HTML
 - Mocha
 - Chai
+- Charts.js
 
 ## Systems/Practices
 - git
@@ -53,6 +54,6 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - After ensuring that both servers are running, the FitLit app should be fully operational at http://localhost.8080
 
 ## Contributors
-- Daniel Solomon
-- DéNaje Ferguson
-- Dillon Parker
+- Daniel Solomon - GitHub: https://github.com/danielsolomon332
+- DéNaje Ferguson - GitHub: https://github.com/Romeslayer
+- Dillon Parker - GitHub: https://github.com/Prkr93
