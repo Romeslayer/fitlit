@@ -5,6 +5,9 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Lots of practice writing dynamic functions to make code easily maintainable.
 - Integrated a third party package to display chart information.
 - Effective use of GitHub projects, project boards, and issues to keep track and develop project.
+- Integrated ARIA/accessibility elements.
+- Achieved a score of 100 with Lighthouse.
+- Implemented POST requests via forms on the app.
 
 ## Learning Goals
 - Implement ES6 classes that communicate with each other as our data structure.
