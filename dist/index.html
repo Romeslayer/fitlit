@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
@@ -10,27 +10,27 @@
       <h2>FitLit</h2>
       <h1 id="userName">Welcome User</h1>
       <p id="stepGoal">Your step goal: / Average: </p>
-      <section class="user-container"><img id="userLogo" />
-        <section class="info-card hidden" id="infoCard"></section>
+      <section class="user-container" role="menu"><img id="userLogo"/>
+        <section class="info-card" aria-hidden="true" id="infoCard"></section>
       </section>
     </header>
     <div class="background"></div>
     <main>
       <section class="update-section">
         <article class="form-display-buttons">
-          <button class="hydration-display">+<i class="fa fa-droplet"></i></button>
-          <button class="sleep-display">+<i class="fa fa-moon"></i></button>
-          <button class="activity-display">+<span><i class="fa fa-person-running"></i><i class="fa fa-stairs"></i></span></button>
+          <button class="hydration-display" aria-controls="hydrationForm" aria-expanded="false" aria-label="Open Intake Form">+<i class="fa fa-droplet"></i></button>
+          <button class="sleep-display" aria-controls="sleepForm" aria-expanded="false" aria-label="Open Sleep Form">+<i class="fa fa-moon"></i></button>
+          <button class="activity-display" aria-controls="activityForm" aria-expanded="false" aria-label="Open Activity Form">+<span><i class="fa fa-person-running"></i><i class="fa fa-stairs"></i></span></button>
         </article>
         <article class="form-section">
-          <form name="hydration" class="hydration-form hidden" id="hydrationForm">
+          <form name="hydration" class="hydration-form" aria-hidden="true" id="hydrationForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numOunces">How many Ounces?</label>
             <input type="number" name="numOunces">
             <input type="submit">
           </form>
-          <form name="sleep" class="sleep-form hidden" id="sleepForm">
+          <form name="sleep" class="sleep-form" aria-hidden="true" id="sleepForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="hoursSlept">How many hours did you sleep?</label>
@@ -40,7 +40,7 @@
             <output id="sleepQualityOutput">2.5</output>
             <input type="submit">
           </form>
-          <form name="activity" class="activity-form hidden" id="activityForm">
+          <form name="activity" class="activity-form" aria-hidden="true" id="activityForm">
             <label for="date">What day?</label>
             <input type="date" name="date">
             <label for="numSteps">How many steps did you take?</label>

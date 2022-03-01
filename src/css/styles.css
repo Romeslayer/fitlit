@@ -59,7 +59,8 @@ canvas, form {
   position: fixed;
 }
 
-.hidden {
+form[aria-hidden = true],
+section[aria-hidden = true] {
   display: none;
 }
 
