@@ -51,3 +51,8 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - run `npm install` to install project dependencies
 - run `npm start` to start server
 - After ensuring that both servers are running, the FitLit app should be fully operational at http://localhost.8080
+
+## Contributors
+- Daniel Solomon
+- DéNaje Ferguson
+- Dillon Parker
