@@ -15,7 +15,7 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Create a dashboard that is easy to use and displays information in a clear way.
 - Write modular, reusable code that follows SRP.
 - Implement a testing suite using TDD for our data structure.
-- Make network requests to retrieve data from external API's.
+- Work with a local server and make network requests to API endpoints to retrieve and manipulate dat.
 
 ## Overview of Project
 - Fitlit is an app where you can view hydration and sleep info, and compare it to other users.
