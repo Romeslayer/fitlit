@@ -30,6 +30,8 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Javascript
 - CSS
 - HTML
+- Mocha
+- Chai
 
 ## Systems/Practices
 - git
