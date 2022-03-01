@@ -18,7 +18,7 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Work with a local server and make network requests to API endpoints to retrieve and manipulate data.
 
 ## Overview of Project
-- Fitlit is an app where you can view hydration and sleep info, and compare it to other users.
+- FitLit is an app where you can view hydration, sleep, and activity info, and compare it to other users (or your own personal records).
 
 ![FitLit gif](https://user-images.githubusercontent.com/90291724/156088838-2ed037d4-cc45-40a8-b4c2-25db07f7f045.gif)
 
