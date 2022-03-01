@@ -5,6 +5,9 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Lots of practice writing dynamic functions to make code easily maintainable.
 - Integrated a third party package to display chart information.
 - Effective use of GitHub projects, project boards, and issues to keep track and develop project.
+- Integrated ARIA/accessibility elements.
+- Achieved a score of 100 with Lighthouse.
+- Implemented POST requests via forms on the app.
 
 ## Learning Goals
 - Implement ES6 classes that communicate with each other as our data structure.
@@ -12,22 +15,30 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - Create a dashboard that is easy to use and displays information in a clear way.
 - Write modular, reusable code that follows SRP.
 - Implement a testing suite using TDD for our data structure.
-- Make network requests to retrieve data from external API's.
+- Work with a local server and make network requests to API endpoints to retrieve and manipulate data.
 
 ## Overview of Project
-- Fitlit is an app where you can view hydration and sleep info, and compare it to other users.
+- FitLit is an app where you can view hydration, sleep, and activity info, and compare it to other users (or your own personal records).
 
-![FitLit](https://user-images.githubusercontent.com/20838033/153958551-932f0c01-ac65-467f-82da-e918d865940a.gif)
+![FitLit gif](https://user-images.githubusercontent.com/90291724/156088838-2ed037d4-cc45-40a8-b4c2-25db07f7f045.gif)
+
+- Here is an example of a user adding water intake data using the form.
+
+![POST example](https://user-images.githubusercontent.com/90291724/156088362-62a26648-3212-4907-94a6-65fdcc96ed38.gif)
 
 ## Technologies Used
 - Javascript
 - CSS
 - HTML
+- Mocha
+- Chai
+- Charts.js
 
 ## Systems/Practices
 - git
 - OOP
 - TDD
+- Web API's
 
 ## Setup
 - Clone down this repo
@@ -35,3 +46,14 @@ Health and wellness is important as ever in todays on the go lifestyle. Keep tra
 - run `npm install` to install project dependencies
 - run `npm start` to start server
 - open the location of the hosted URL, generally http://localhost.8080
+
+- Additionally, we will need to run the data server:
+- Clone [this local server](https://github.com/turingschool-examples/fitlit-api) down to your machine. Not into the same directory!
+- run `npm install` to install project dependencies
+- run `npm start` to start server
+- After ensuring that both servers are running, the FitLit app should be fully operational at http://localhost.8080
+
+## Contributors
+- Daniel Solomon - GitHub: https://github.com/danielsolomon332
+- DéNaje Ferguson - GitHub: https://github.com/Romeslayer
+- Dillon Parker - GitHub: https://github.com/Prkr93

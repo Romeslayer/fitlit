@@ -62,9 +62,9 @@ const handleData = (data) => {
       const newActivity = {
         userID: currentUser.id,
         date: formData.get('date').split('-').join('/'),
-        numSteps: formData.get('numSteps'),
-        minutesActive: formData.get('minutesActive'),
-        flightsOfStairs: formData.get('flightsOfStairs')
+        numSteps: parseInt(formData.get('numSteps')),
+        minutesActive: parseInt(formData.get('minutesActive')),
+        flightsOfStairs: parseInt(formData.get('flightsOfStairs'))
       }
       currentUser.activity.days.push(newActivity);
       currentUser.activity.days.sort((a, b) => {
@@ -77,7 +77,7 @@ const handleData = (data) => {
       const newHydrate = {
         userID: currentUser.id,
         date: formData.get('date').split('-').join('/'),
-        numOunces: formData.get('numOunces')
+        numOunces: parseInt(formData.get('numOunces'))
       }
       postData(e.target.name, newHydrate);
       currentUser.hydration.days.push(newHydrate);
@@ -91,11 +91,11 @@ const handleData = (data) => {
       const newSleep = {
         userID: currentUser.id,
         date: formData.get('date').split('-').join('/'),
-        hoursSlept: formData.get('hoursSlept'),
-        sleepQuality: formData.get('sleepQuality')
+        hoursSlept: parseInt(formData.get('hoursSlept')),
+        sleepQuality: parseFloat(formData.get('sleepQuality'))
       }
       currentUser.sleep.days.push(newSleep);
-      currentUser.sort((a, b) => {
+      currentUser.sleep.days.sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       });
       postData(e.target.name, newSleep);
